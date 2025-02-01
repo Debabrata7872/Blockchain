@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Photo Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient from orange to light orange */
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for added depth */
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Photo Gallery</h1>
+    </header>
+    <div class="gallery">
+        <img src="image1.jpg" alt="Image 1">
+        <img src="image2.jpg" alt="Image 2">
+        <img src="image3.jpg" alt="Image 3">
+        <img src="image4.jpg" alt="Image 4">
+        <img src="image5.jpg" alt="Image 5">
+        <img src="image6.jpg" alt="Image 6">
+        <img src="image7.jpg" alt="Image 7">
+        <img src="image8.jpg" alt="Image 8">
+        <img src="image9.jpg" alt="Image 9">
+        <img src="image10.jpg" alt="Image 10">
+        <img src="image11.jpg" alt="Image 11">
+        <img src="image12.jpg" alt="Image 12">
+        <img src="image13.jpg" alt="Image 13">
+        <img src="image14.jpg" alt="Image 14">
+        <img src="image15.jpg" alt="Image 15">
+        <img src="image16.jpg" alt="Image 16">
+        <img src="image17.jpg" alt="Image 17">
+        <img src="image18.jpg" alt="Image 18">
+        <img src="image19.jpg" alt="Image 19">
+        <img src="image20.jpg" alt="Image 20">
+        <img src="image21.jpg" alt="Image 21">
+        <img src="image22.jpg" alt="Image 22">
+        <img src="image23.jpg" alt="Image 23">
+        <img src="image24.jpg" alt="Image 24">
+        <img src="image25.jpg" alt="Image 25">
+        <img src="image26.jpg" alt="Image 26">
+        <img src="image27.jpg" alt="Image 27">
+        <img src="image28.jpg" alt="Image 28">
+    </div>
+</body>
+</html>
