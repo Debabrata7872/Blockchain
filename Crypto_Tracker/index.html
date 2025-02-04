@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Price Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .crypto-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .green {
+            color: green;
+        }
+        .red {
+            color: red;
+        }
+        .error {
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cryptocurrency Price Tracker</h1>
+        <select id="cryptoSelect">
+            <option value="bitcoin">Bitcoin</option>
+            <option value="ethereum">Ethereum</option>
+            <option value="litecoin">Litecoin</option>
+        </select>
+        <div id="cryptoInfo" class="crypto-info">
+            <span id="price"></span>
+            <span id="volume"></span>
+            <span id="change"></span>
+        </div>
+        <div id="error" class="error"></div>
+    </div>
+
+    <script>
+        document.getElementById('cryptoSelect').addEventListener('change', fetchCryptoData);
+
+        async function fetchCryptoData() {
+            const crypto = document.getElementById('cryptoSelect').value;
+            const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${crypto}`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                const cryptoData = data[0];
+                document.getElementById('price').textContent = `Price: $${cryptoData.current_price}`;
+                document.getElementById('volume').textContent = `24h Volume: $${cryptoData.total_volume}`;
+                const changeElement = document.getElementById('change');
+                changeElement.textContent = `24h Change: ${cryptoData.price_change_percentage_24h.toFixed(2)}%`;
+                if (cryptoData.price_change_percentage_24h >= 0) {
+                    changeElement.className = 'green';
+                } else {
+                    changeElement.className = 'red';
+                }
+                document.getElementById('error').textContent = '';
+            } catch (error) {
+                document.getElementById('error').textContent = 'Error fetching data. Please try again later.';
+            }
+        }
+        fetchCryptoData();
+    </script>
+</body>
+</html>
