@@ -31,9 +31,27 @@
             color: red;
             margin-top: 20px;
         }
+        .background {
+            background-image: url('https://img.freepik.com/free-photo/still-life-composition-with-cryptocurrency_23-2149102125.jpg?semt=ais_hybrid');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            color: rgb(0, 0, 0);
+        }
     </style>
 </head>
 <body>
+    <div class="background">
     <div class="container">
         <h1>Cryptocurrency Price Tracker</h1>
         <select id="cryptoSelect">
@@ -48,6 +66,10 @@
         </div>
         <div id="error" class="error"></div>
     </div>
+    <footer>
+        &copy; 2025 Debabrata. All rights reserved.
+    </footer>
+</div>
 
     <script>
         document.getElementById('cryptoSelect').addEventListener('change', fetchCryptoData);
